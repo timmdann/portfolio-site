@@ -30,14 +30,15 @@ Live demo 👉 [portfolio-timmdann.vercel.app](https://portfolio-timmdann.vercel
 
 Clone the repository and run locally:
 
-1. Clone the repo:
+```bash
+# 1. Clone the repo
 git clone https://github.com/timmdann/portfolio-site.git
 cd portfolio-site
 
-2. Install dependencies:
+# 2. Install dependencies
 npm install
 
-3. Start development server:
+# 3. Start development server
 npm run dev
 
 Now the app should be running at
