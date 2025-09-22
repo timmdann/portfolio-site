@@ -31,7 +31,6 @@ Live demo 👉 [portfolio-timmdann.vercel.app](https://portfolio-timmdann.vercel
 Clone the repository and run locally:
 
 1. Clone the repo:
-```bash
 git clone https://github.com/timmdann/portfolio-site.git
 cd portfolio-site
 
