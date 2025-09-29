@@ -1,6 +1,17 @@
 import ShinyText from "../components/text/ShinyText";
 import ProjectCard from "../components/projectCard/ProjectCard";
-import { Page, Title, CardsRow } from "./styles";
+import {
+  Page,
+  Title,
+  CardsRow,
+  CardTitle,
+  CardTitleRow,
+  CardTitlContainer,
+  CardSubtitle,
+} from "./styles";
+import { FaReact } from "react-icons/fa";
+import { SiTypescript, SiReactrouter } from "react-icons/si";
+import { RiTailwindCssFill } from "react-icons/ri";
 
 function Projects() {
   return (
@@ -15,9 +26,28 @@ function Projects() {
       </Title>
       <CardsRow>
         <ProjectCard
-          imageSrc="/project-1.png"
+          link="https://qitchen-restaurant-site.vercel.app/"
+          imageSrc="/project-3.png"
           altText="Soon..."
-          captionText="Soon..."
+          captionText={
+            <CardTitle>
+              <CardSubtitle>Qitchen — Restaurant</CardSubtitle>
+              <CardTitlContainer>
+                <CardTitleRow>
+                  <FaReact /> React
+                </CardTitleRow>
+                <CardTitleRow>
+                  <SiTypescript /> TypeScript
+                </CardTitleRow>
+                <CardTitleRow>
+                  <RiTailwindCssFill /> TailwindCSS
+                </CardTitleRow>
+                <CardTitleRow>
+                  <SiReactrouter /> React Router
+                </CardTitleRow>
+              </CardTitlContainer>
+            </CardTitle>
+          }
           containerHeight="500px"
           containerWidth="500px"
           imageHeight="300px"
@@ -43,7 +73,7 @@ function Projects() {
           displayOverlayContent={true}
         />
         <ProjectCard
-          imageSrc="/project-3.png"
+          imageSrc="/project-1.png"
           altText="Soon..."
           captionText="Soon..."
           containerHeight="500px"

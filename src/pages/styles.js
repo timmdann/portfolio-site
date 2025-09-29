@@ -99,6 +99,30 @@ const SkillsContainer = styled.div`
   margin-bottom: 200px;
 `;
 
+const CardTitle = styled.div`
+  display: flex;
+  flex-flow: column;
+  gap: 20px;
+`;
+
+const CardTitleRow = styled.span`
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+`;
+
+const CardTitlContainer = styled.div`
+  display: flex;
+  flex-flow: row;
+  gap: 20px;
+`;
+
+const CardSubtitle = styled.h3`
+  text-align: center;
+`;
 export {
   HomePage,
   TextShadow,
@@ -111,4 +135,8 @@ export {
   CardsRow,
   TypingText,
   SkillsContainer,
+  CardTitle,
+  CardTitleRow,
+  CardTitlContainer,
+  CardSubtitle,
 };

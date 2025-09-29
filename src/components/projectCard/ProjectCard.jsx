@@ -17,6 +17,7 @@ const springValues = {
 };
 
 export default function ProjectCard({
+  link,
   imageSrc,
   altText = "Tilted card image",
   captionText = "",
@@ -80,31 +81,33 @@ export default function ProjectCard({
   }
 
   return (
-    <Figure
-      ref={ref}
-      style={{
-        height: containerHeight,
-        width: containerWidth,
-      }}
-      onMouseMove={handleMouse}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      {showMobileWarning && (
-        <MobileAlert>
-          This effect is not optimized for mobile. Check on desktop.
-        </MobileAlert>
-      )}
+    <a href={link}>
+      <Figure
+        ref={ref}
+        style={{
+          height: containerHeight,
+          width: containerWidth,
+        }}
+        onMouseMove={handleMouse}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {showMobileWarning && (
+          <MobileAlert>
+            This effect is not optimized for mobile. Check on desktop.
+          </MobileAlert>
+        )}
 
-      <Inner style={{ rotateX, rotateY, scale }}>
-        <Header>{captionText}</Header>
-        <ImageArea>
-          {imageSrc && <Img src={imageSrc} alt={altText} />}
-          {displayOverlayContent && overlayContent && (
-            <Overlay>{overlayContent}</Overlay>
-          )}
-        </ImageArea>
-      </Inner>
-    </Figure>
+        <Inner style={{ rotateX, rotateY, scale }}>
+          <Header>{captionText}</Header>
+          <ImageArea>
+            {imageSrc && <Img src={imageSrc} alt={altText} />}
+            {displayOverlayContent && overlayContent && (
+              <Overlay>{overlayContent}</Overlay>
+            )}
+          </ImageArea>
+        </Inner>
+      </Figure>
+    </a>
   );
 }
