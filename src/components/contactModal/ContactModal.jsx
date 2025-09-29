@@ -99,7 +99,7 @@ export default function ContactModal({ open, onClose }) {
         <Title id="contact-title">Contact me</Title>
         <Sub>I'll get back to you as soon as possible.</Sub>
 
-        <Form onSubmit={sendEmail}>
+        <Form onSubmit={sendEmail} noValidate>
           <Row>
             <div>
               <Label htmlFor="name">Name</Label>
@@ -109,6 +109,8 @@ export default function ContactModal({ open, onClose }) {
                 value={values.name}
                 onChange={onInput}
                 placeholder="Your name"
+                autoComplete="name"
+                enterKeyHint="next"
               />
             </div>
             <div>
@@ -120,6 +122,9 @@ export default function ContactModal({ open, onClose }) {
                 value={values.email}
                 onChange={onInput}
                 placeholder="you@example.com"
+                autoComplete="email"
+                inputMode="email"
+                enterKeyHint="next"
               />
             </div>
           </Row>
@@ -132,6 +137,8 @@ export default function ContactModal({ open, onClose }) {
               value={values.message}
               onChange={onInput}
               placeholder="Write your message..."
+              autoComplete="off"
+              enterKeyHint="send"
             />
           </div>
 

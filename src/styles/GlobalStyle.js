@@ -1,5 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 
+const bp = {
+  xs: 480,
+  sm: 768,
+  md: 1024,
+  lg: 1280,
+};
+
 export const GlobalStyle = createGlobalStyle`
 
  :root {
@@ -67,6 +74,9 @@ export const GlobalStyle = createGlobalStyle`
     radial-gradient(140% 120% at 100% 20%, var(--indigo-700) 0%, transparent 65%),
     linear-gradient(145deg, var(--indigo-900) 0%, var(--indigo-700) 40%, var(--indigo-600) 70%, var(--indigo-500) 100%);
   
+  --container-max: 1200px;
+  --container-pad: clamp(16px, 5vw, 48px);
+
   }
 
 *,
@@ -125,4 +135,5 @@ export const GlobalStyle = createGlobalStyle`
   body {
     overflow-x: hidden;
   }
+  
 `;

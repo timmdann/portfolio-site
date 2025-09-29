@@ -36,6 +36,15 @@ const Dialog = styled.div`
   border: 1px solid rgba(var(--grey-900-rgb), 0.08);
   box-shadow: 0 24px 60px rgba(var(--grey-900-rgb), 0.45);
   color: var(--mist-50);
+
+  @media (max-width: 768px) {
+    padding: 18px;
+    border-radius: 18px;
+  }
+  @media (max-width: 560px) {
+    padding: 16px;
+    border-radius: 16px;
+  }
 `;
 
 const Title = styled.h3`
@@ -52,6 +61,10 @@ const Sub = styled.p`
 const Form = styled.form`
   display: grid;
   gap: 14px;
+
+  @media (max-width: 560px) {
+    gap: 10px;
+  }
 `;
 
 const Row = styled.div`
@@ -81,6 +94,7 @@ const controlCss = `
   color: var(--mist-50);
   outline: none;
   transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+  font-size: 16px; /* iOS anti-zoom */
   ::placeholder { color: rgba(var(--grey-900-rgb), 0.55); }
   &:focus {
     border-color: var(--slate-300);
@@ -98,6 +112,10 @@ const Textarea = styled.textarea`
   min-height: 140px;
   resize: vertical;
   line-height: 1.4;
+
+  @media (max-width: 560px) {
+    min-height: 120px;
+  }
 `;
 
 const Actions = styled.div`
@@ -105,12 +123,25 @@ const Actions = styled.div`
   display: flex;
   gap: 10px;
   justify-content: flex-end;
+
+  @media (max-width: 560px) {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    justify-content: center;
+    gap: 8px;
+
+    & > * {
+      width: 100%;
+      min-height: 44px;
+    }
+  }
 `;
 
 const ErrorText = styled.div`
   color: var(--red-100);
   font-size: 0.85rem;
   margin-top: -4px;
+  word-break: break-word;
 `;
 
 export {

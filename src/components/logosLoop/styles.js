@@ -27,8 +27,8 @@ const Root = styled.div`
       mask-image: linear-gradient(
         to right,
         rgba(var(--grey-900-rgb), 0) 0,
-        /* прозрачность от grey-900 */ var(--indigo-900) var(--fadeW),
-        /* твой цвет */ var(--indigo-900) calc(100% - var(--fadeW)),
+        var(--indigo-900) var(--fadeW),
+        var(--indigo-900) calc(100% - var(--fadeW)),
         rgba(var(--grey-900-rgb), 0) 100%
       );
       -webkit-mask-image: linear-gradient(

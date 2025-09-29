@@ -9,7 +9,7 @@ const shine = keyframes`
   }
 `;
 
-const ShinyTextWrapper = styled.div`
+const ShinyTextWrapper = styled.span`
   color: #b5b5b5a4;
   background: linear-gradient(
     120deg,

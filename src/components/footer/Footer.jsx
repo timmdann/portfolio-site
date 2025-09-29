@@ -8,10 +8,15 @@ function Footer() {
         <FooterElement
           href="https://www.linkedin.com/in/timmdann/"
           target="_blank"
+          rel="noopener noreferrer"
         >
           LinkedIn
         </FooterElement>
-        <FooterElement href="https://github.com/timmdann" target="_blank">
+        <FooterElement
+          href="https://github.com/timmdann"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           GitHub
         </FooterElement>
       </LinkContainer>

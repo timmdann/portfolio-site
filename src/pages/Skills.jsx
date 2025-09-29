@@ -108,7 +108,7 @@ const techLogos = [
 
 function Skills() {
   return (
-    <SkillsContainer>
+    <SkillsContainer aria-label="Skills section">
       <SpotlightCard
         className="custom-spotlight-card"
         spotlightColor="var(--slate-600)"

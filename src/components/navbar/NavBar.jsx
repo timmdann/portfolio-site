@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import { BarWrap, Nav, NavList, NavElement } from "./styles";
 
 function NavBar() {

@@ -50,4 +50,29 @@ export const Card = styled.div`
   &:focus-within::before {
     opacity: 0.6;
   }
+
+  @media (max-width: 1024px) {
+    margin: 0 8%;
+    --fade: 200px;
+    min-height: 360px;
+  }
+  @media (max-width: 768px) {
+    margin: 0 6%;
+    padding: 8px;
+    --fade: 140px;
+    min-height: 320px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  @media (max-width: 560px) {
+    margin: 0 4%;
+    padding: 8px;
+    --fade: 96px;
+    min-height: 280px;
+  }
+  @media (max-width: 400px) {
+    margin: 0 3%;
+    --fade: 72px;
+    min-height: 260px;
+  }
 `;

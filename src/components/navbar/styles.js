@@ -7,6 +7,11 @@ const BarWrap = styled.div`
   transform: translateX(-50%);
   z-index: 1000;
   width: min(92vw, 640px);
+
+  @media (max-width: 768px) {
+    width: 95vw;
+    top: 8px;
+  }
 `;
 
 const Nav = styled.nav`
@@ -18,6 +23,21 @@ const Nav = styled.nav`
   padding: 15px 20px;
   width: 100%;
   backdrop-filter: blur(5px);
+
+  @media (max-width: 768px) {
+    padding: 10px 14px;
+    border-radius: 20px;
+  }
+
+  div span {
+    @media (max-width: 480px) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    justify-content: center;
+  }
 `;
 
 const NavList = styled.ul`
@@ -26,6 +46,11 @@ const NavList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
+
+  @media (max-width: 480px) {
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
 `;
 
 const NavElement = styled.li`

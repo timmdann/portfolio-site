@@ -25,6 +25,12 @@ const Content = styled.div`
   z-index: 1;
 `;
 
+const MainContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+`;
+
 function App() {
   return (
     <>
@@ -46,18 +52,20 @@ function App() {
 
       <Content>
         <NavBar />
-        <section id="home">
-          <Home />
-        </section>
-        <section id="skills">
-          <Skills />
-        </section>
-        <section id="projects">
-          <Projects />
-        </section>
-        <section id="contacts">
-          <Footer />
-        </section>
+        <MainContent>
+          <section id="home">
+            <Home />
+          </section>
+          <section id="skills">
+            <Skills />
+          </section>
+          <section id="projects">
+            <Projects />
+          </section>
+          <section id="contacts">
+            <Footer />
+          </section>
+        </MainContent>
       </Content>
     </>
   );
