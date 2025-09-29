@@ -81,7 +81,7 @@ export default function ProjectCard({
   }
 
   return (
-    <a href={link}>
+    <a href={link} target="_blank">
       <Figure
         ref={ref}
         style={{
