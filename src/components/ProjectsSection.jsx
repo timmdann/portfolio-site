@@ -1,34 +1,29 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
+import Button from "./Button";
 
 const projects = [
   {
     id: 1,
-    title: "SaaS Landing Page",
-    description: "A beautiful landing page app using React and Tailwind.",
-    image: "/projects/project1.png",
-    tags: ["React", "TailwindCSS", "Supabase"],
-    demoUrl: "#",
-    githubUrl: "#",
+    title: "Restaurant Page",
+    description: "A beautiful restaurant page app using React and Tailwind.",
+    image: "/project-1.png",
+    tags: ["React", "TailwindCSS", "TypeScript"],
+    demoUrl: "https://qitchen-restaurant-site.vercel.app/",
+    githubUrl: "https://github.com/timmdann/qitchen-restaurant-site",
   },
   {
     id: 2,
-    title: "Orbit Analytics Dashboard",
-    description:
-      "Interactive analytics dashboard with data visualization and filtering capabilities.",
-    image: "/projects/project2.png",
-    tags: ["TypeScript", "D3.js", "Next.js"],
-    demoUrl: "#",
-    githubUrl: "#",
+    title: "Soon...",
+    description: "",
+    image: "/project-2.png",
+    tags: [],
   },
   {
     id: 3,
-    title: "E-commerce Platform",
-    description:
-      "Full-featured e-commerce platform with user authentication and payment processing.",
-    image: "/projects/project3.png",
-    tags: ["React", "Node.js", "Stripe"],
-    demoUrl: "#",
-    githubUrl: "#",
+    title: "Soon...",
+    description: "",
+    image: "/project-3.png",
+    tags: [],
   },
 ];
 
@@ -37,7 +32,6 @@ export const ProjectsSection = () => {
     <section id="projects" className="py-24 px-4 relative">
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          {" "}
           Featured <span className="text-primary"> Projects </span>
         </h2>
 
@@ -97,13 +91,11 @@ export const ProjectsSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <a
-            className="cosmic-button w-fit flex items-center mx-auto gap-2"
-            target="_blank"
-            href="https://github.com/machadop1407"
-          >
-            Check My Github <ArrowRight size={16} />
-          </a>
+          <Button href="https://github.com/timmdann" target="_blank">
+            <span className="inline-flex items-center gap-2 whitespace-nowrap">
+              Check My Github <ArrowRight size={16} />
+            </span>
+          </Button>
         </div>
       </div>
     </section>

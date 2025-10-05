@@ -1,4 +1,5 @@
 import { Briefcase, Code, User } from "lucide-react";
+import Button from "./Button";
 
 export const AboutSection = () => {
   return (
@@ -16,9 +17,9 @@ export const AboutSection = () => {
             </h3>
 
             <p className="text-muted-foreground">
-              With over 5 years of experience in web development, I specialize
-              in creating responsive, accessible, and performant web
-              applications using modern technologies.
+              With experience in web development, I specialize in creating
+              responsive, accessible, and high-performance web applications
+              using modern technologies.
             </p>
 
             <p className="text-muted-foreground">
@@ -29,22 +30,15 @@ export const AboutSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-              <a href="#contact" className="cosmic-button">
-                {" "}
-                Get In Touch
-              </a>
-
-              <a
-                href=""
-                className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
-              >
+              <Button href="#contact">Get In Touch</Button>
+              <Button href="/Tymofieiev_Daniil_CV.pdf" download>
                 Download CV
-              </a>
+              </Button>
             </div>
           </div>
 
           <div className="grid grid-cols-1 gap-6">
-            <div className="gradient-border p-6 card-hover">
+            <div className="gradient-border p-6">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full bg-primary/10">
                   <Code className="h-6 w-6 text-primary" />
@@ -58,7 +52,7 @@ export const AboutSection = () => {
                 </div>
               </div>
             </div>
-            <div className="gradient-border p-6 card-hover">
+            <div className="gradient-border p-6">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full bg-primary/10">
                   <User className="h-6 w-6 text-primary" />
@@ -66,13 +60,13 @@ export const AboutSection = () => {
                 <div className="text-left">
                   <h4 className="font-semibold text-lg">UI/UX Design</h4>
                   <p className="text-muted-foreground">
-                    Designing intuitive user interfaces and seamless user
-                    experiences.
+                    Transferring the finished design solution into a
+                    high-quality, ready-to-use product.
                   </p>
                 </div>
               </div>
             </div>
-            <div className="gradient-border p-6 card-hover">
+            <div className="gradient-border p-6">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full bg-primary/10">
                   <Briefcase className="h-6 w-6 text-primary" />

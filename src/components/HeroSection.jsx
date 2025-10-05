@@ -1,6 +1,6 @@
 import { ArrowDown } from "lucide-react";
 import Avatar from "./Avatar";
-import ShinyText from "./ShinyText";
+import Button from "./Button";
 
 export const HeroSection = () => {
   return (
@@ -12,21 +12,9 @@ export const HeroSection = () => {
         <div className="space-y-6">
           <Avatar />
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-            <span className="opacity-0 animate-fade-in-delay-1">
-              <ShinyText
-                text="Daniil"
-                disabled={false}
-                speed={5}
-                className="custom-class"
-              />
-            </span>
+            <span className="opacity-0 animate-fade-in-delay-1">Daniil</span>
             <span className="ml-2 opacity-0 animate-fade-in-delay-2">
-              <ShinyText
-                text="Tymofieiev"
-                disabled={false}
-                speed={5}
-                className="custom-class"
-              />
+              Tymofieiev
             </span>
           </h1>
           <h2 className="text-2xl md:text-4xl text-muted-foreground max-2-2xl mx-auto opacity-0 animate-fade-in-delay-3">
@@ -40,16 +28,9 @@ export const HeroSection = () => {
           </p>
 
           <div className="pt-4 opacity-0 animate-fade-in-delay-4">
-            <a href="#projects" className="cosmic-button">
-              View My Work
-            </a>
+            <Button href="#projects">View My Work</Button>
           </div>
         </div>
-      </div>
-
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
-        <span className="text-sm text-muted-foreground mb-2"> Scroll </span>
-        <ArrowDown className="h-5 w-5 text-primary" />
       </div>
     </section>
   );

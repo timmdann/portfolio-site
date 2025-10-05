@@ -2,7 +2,7 @@ function Avatar() {
   return (
     <div
       className="
-        relative
+        relative opacity-0 animate-fade-in-delay-2
         w-[180px] aspect-square rounded-full overflow-hidden
         border-[3px] border-[var(--mist-50)]
         shadow-[0_18px_40px_rgba(var(--grey-900-rgb),0.85)]
