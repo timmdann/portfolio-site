@@ -11,7 +11,6 @@ Live demo 👉 [portfolio-timmdann.vercel.app](https://portfolio-timmdann.vercel
 - **Skills** section with technologies and tools I use
 - **Projects** section with preview cards (each project will have its own repository)
 - Responsive layout for all devices
-- Smooth animations and hover effects with `styled-components`
 - **Contact form** integrated with [EmailJS](https://www.emailjs.com/) to send feedback directly to me
 
 ---
@@ -19,8 +18,9 @@ Live demo 👉 [portfolio-timmdann.vercel.app](https://portfolio-timmdann.vercel
 ## 🛠 Tech Stack
 
 - [React](https://reactjs.org/) + [Vite](https://vitejs.dev/) — fast frontend development
-- [Styled-components](https://styled-components.com/) — CSS-in-JS styling
+- [TailwindCSS](https://tailwindcss.com/) — styling and responsive utilities
 - [JavaScript (ES6+)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [React Hot Toast](https://react-hot-toast.com/) for notifications
 - [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS), [HTML5](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - [Git](https://git-scm.com/) & [GitHub](https://github.com/) for version control
 - Deployment on [Vercel](https://vercel.com/)
