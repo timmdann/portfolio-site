@@ -5,8 +5,8 @@ export default {
     extend: {
       keyframes: {
         shine: {
-          "0%": { "background-position": "100%" },
-          "100%": { "background-position": "-100%" },
+          "0%": { "background-position": "200% center" },
+          "100%": { "background-position": "-200% center" },
         },
       },
       animation: {

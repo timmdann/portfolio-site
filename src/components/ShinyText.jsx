@@ -1,40 +1,28 @@
-const ShinyText = ({ text, disabled = false, speed = 5, className = "" }) => {
-  const animationDuration = `${speed}s`;
+import { cn } from "../lib/utils";
 
+const shimmerGradient =
+  "linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.9) 45%, rgba(255, 255, 255, 0.05) 100%)";
+
+const ShinyText = ({ text, disabled = false, speed = 5, className = "" }) => {
   return (
-    <div
-      className={`text-[#b5b5b5a4] bg-clip-text inline-block ${
-        disabled ? "" : "animate-shine"
-      } ${className}`}
+    <span
+      className={cn(
+        "inline-block bg-clip-text",
+        disabled ? "text-[#b5b5b5a4]" : "text-transparent animate-shine",
+        className,
+      )}
       style={{
-        backgroundImage:
-          "linear-gradient(120deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 60%)",
+        backgroundImage: disabled ? undefined : shimmerGradient,
         backgroundSize: "200% 100%",
+        backgroundPosition: "200% center",
         WebkitBackgroundClip: "text",
-        animationDuration: animationDuration,
+        WebkitTextFillColor: "transparent",
+        animationDuration: `${speed}s`,
       }}
     >
       {text}
-    </div>
+    </span>
   );
 };
 
 export default ShinyText;
-
-// tailwind.config.js
-// module.exports = {
-//   theme: {
-//     extend: {
-//       keyframes: {
-//         shine: {
-//           '0%': { 'background-position': '100%' },
-//           '100%': { 'background-position': '-100%' },
-//         },
-//       },
-//       animation: {
-//         shine: 'shine 5s linear infinite',
-//       },
-//     },
-//   },
-//   plugins: [],
-// };
