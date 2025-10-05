@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import emailjs from "@emailjs/browser";
 import Button from "./Button";
-import { useToast } from "../hooks/use-toast";
+import { useToast } from "../hooks/useToast";
 
 export default function ContactModal({ open, onClose }) {
   const dialogRef = useRef(null);
