@@ -1,12 +1,9 @@
 import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
-// import { cn } from "../lib/utils";
-// import { useToast } from "../hooks/use-toast";
 import { useState } from "react";
 import ContactModal from "./ContactModal";
 import Button from "./Button";
 
 export const ContactSection = () => {
-  // const { toast } = useToast();
   const [open, setOpen] = useState(false);
 
   return (

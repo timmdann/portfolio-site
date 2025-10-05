@@ -5,7 +5,7 @@ export default function Button({
   onClick,
   target,
   rel,
-  type, // важно: позволяем передавать тип (submit, button, reset)
+  type,
   ...props
 }) {
   const classes = [
@@ -28,10 +28,8 @@ export default function Button({
     onClick?.(e);
     if (e.defaultPrevented) return;
 
-    // Для обычной кнопки (без href) — ничего не перехватываем
     if (!href) return;
 
-    // Для ссылок — кастомная навигация
     if (isHash) {
       e.preventDefault();
       const id = href.slice(1);
@@ -51,11 +49,9 @@ export default function Button({
       {...props}
       onClick={handleClick}
       className={classes}
-      {
-        ...(Comp === "a"
-          ? { href, target: target ?? defaultTarget, rel: safeRel }
-          : { type: type ?? "button" }) // НЕ принудительно "button": уважаем переданный type (например, submit)
-      }
+      {...(Comp === "a"
+        ? { href, target: target ?? defaultTarget, rel: safeRel }
+        : { type: type ?? "button" })}
     >
       <span className="relative z-10 transition-colors duration-300 group-hover:text-[hsl(var(--background))]">
         {children}

@@ -1,4 +1,3 @@
-import { ArrowDown } from "lucide-react";
 import Avatar from "./Avatar";
 import Button from "./Button";
 

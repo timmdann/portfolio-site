@@ -9,7 +9,7 @@ export default function ContactModal({ open, onClose }) {
   const [values, setValues] = useState({ name: "", email: "", message: "" });
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
-  const { toast } = useToast(); // 👈
+  const { toast } = useToast();
 
   useEffect(() => {
     if (!open) return;
@@ -51,7 +51,6 @@ export default function ContactModal({ open, onClose }) {
       return;
     }
 
-    // Показать «Sending…» (можно одно активное уведомление)
     const pending = toast({
       title: "Sending…",
       description: "Your message is being sent.",
@@ -71,10 +70,9 @@ export default function ContactModal({ open, onClose }) {
           from_email: values.email,
           message: values.message,
         },
-        PUBLIC_KEY // 👈 строка, не объект
+        PUBLIC_KEY
       );
 
-      // Обновим тост на успешный
       pending.update({
         title: "Message sent ✅",
         description: "Thanks! I’ll get back to you soon.",
@@ -85,7 +83,6 @@ export default function ContactModal({ open, onClose }) {
     } catch (err) {
       console.error("EmailJS error:", err);
 
-      // Обновим тост на ошибку
       pending.update({
         title: "Failed to send",
         description:
@@ -93,7 +90,6 @@ export default function ContactModal({ open, onClose }) {
         variant: "destructive",
       });
 
-      // Фоллбэк на mailto
       const subject = encodeURIComponent(
         `Portfolio message from ${values.name}`
       );
