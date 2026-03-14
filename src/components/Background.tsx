@@ -45,7 +45,7 @@ float snoise(vec2 v){
           dot(x0, x0),
           dot(x12.xy, x12.xy),
           dot(x12.zw, x12.zw)
-      ), 
+      ),
       0.0
   );
   m = m * m;
@@ -84,121 +84,136 @@ struct ColorStop {
 
 void main() {
   vec2 uv = gl_FragCoord.xy / uResolution;
-  
+
   ColorStop colors[3];
   colors[0] = ColorStop(uColorStops[0], 0.0);
   colors[1] = ColorStop(uColorStops[1], 0.5);
   colors[2] = ColorStop(uColorStops[2], 1.0);
-  
+
   vec3 rampColor;
   COLOR_RAMP(colors, uv.x, rampColor);
-  
+
   float height = snoise(vec2(uv.x * 2.0 + uTime * 0.1, uTime * 0.25)) * 0.5 * uAmplitude;
   height = exp(height);
   height = (uv.y * 2.0 - height + 0.2);
   float intensity = 0.6 * height;
-  
+
   float midPoint = 0.20;
   float auroraAlpha = smoothstep(midPoint - uBlend * 0.5, midPoint + uBlend * 0.5, intensity);
-  
+
   vec3 auroraColor = intensity * rampColor;
-  
+
   fragColor = vec4(auroraColor * auroraAlpha, auroraAlpha);
 }
 `;
 
-export default function Background(props) {
+interface BackgroundProps {
+  colorStops?: string[];
+  amplitude?: number;
+  blend?: number;
+  speed?: number;
+  time?: number;
+}
+
+const parseColorStops = (stops: string[]): number[][] =>
+  stops.map((hex) => {
+    const c = new Color(hex);
+    return [c.r, c.g, c.b];
+  });
+
+export default function Background(props: BackgroundProps) {
   const {
     colorStops = ["#5227FF", "#7cff67", "#5227FF"],
     amplitude = 1.0,
     blend = 0.5,
   } = props;
+
+  // Use a ref to always have the latest props in the animation loop
+  // without restarting the WebGL context on every prop change.
   const propsRef = useRef(props);
   propsRef.current = props;
 
-  const ctnDom = useRef(null);
+  const ctnRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctn = ctnDom.current;
+    const ctn = ctnRef.current;
     if (!ctn) return;
 
-    const renderer = new Renderer({
-      alpha: true,
-      premultipliedAlpha: true,
-      antialias: true,
-    });
+    const renderer = new Renderer({ alpha: true, premultipliedAlpha: true, antialias: true });
     const gl = renderer.gl;
     gl.clearColor(0, 0, 0, 0);
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
     gl.canvas.style.backgroundColor = "transparent";
 
-    let program;
-
-    function resize() {
-      if (!ctn) return;
-      const width = ctn.offsetWidth;
-      const height = ctn.offsetHeight;
-      renderer.setSize(width, height);
-      if (program) {
-        program.uniforms.uResolution.value = [width, height];
-      }
-    }
-    window.addEventListener("resize", resize);
+    // Cache parsed colors so we don't allocate Color objects every animation frame.
+    let cachedStopKey = colorStops.join(",");
+    let cachedColorData = parseColorStops(colorStops);
 
     const geometry = new Triangle(gl);
-    if (geometry.attributes.uv) {
-      delete geometry.attributes.uv;
+    if (geometry.attributes["uv"]) {
+      delete geometry.attributes["uv"];
     }
 
-    const colorStopsArray = colorStops.map((hex) => {
-      const c = new Color(hex);
-      return [c.r, c.g, c.b];
-    });
-
-    program = new Program(gl, {
+    const program = new Program(gl, {
       vertex: VERT,
       fragment: FRAG,
       uniforms: {
         uTime: { value: 0 },
         uAmplitude: { value: amplitude },
-        uColorStops: { value: colorStopsArray },
+        uColorStops: { value: cachedColorData },
         uResolution: { value: [ctn.offsetWidth, ctn.offsetHeight] },
         uBlend: { value: blend },
       },
     });
 
+    const resize = () => {
+      const width = ctn.offsetWidth;
+      const height = ctn.offsetHeight;
+      renderer.setSize(width, height);
+      program.uniforms["uResolution"].value = [width, height];
+    };
+    window.addEventListener("resize", resize);
+
     const mesh = new Mesh(gl, { geometry, program });
     ctn.appendChild(gl.canvas);
 
     let animateId = 0;
-    const update = (t) => {
+    const update = (t: number) => {
       animateId = requestAnimationFrame(update);
-      const { time = t * 0.01, speed = 1.0 } = propsRef.current;
-      program.uniforms.uTime.value = time * speed * 0.1;
-      program.uniforms.uAmplitude.value = propsRef.current.amplitude ?? 1.0;
-      program.uniforms.uBlend.value = propsRef.current.blend ?? blend;
-      const stops = propsRef.current.colorStops ?? colorStops;
-      program.uniforms.uColorStops.value = stops.map((hex) => {
-        const c = new Color(hex);
-        return [c.r, c.g, c.b];
-      });
+      const p = propsRef.current;
+      const time = p.time ?? t * 0.01;
+      const speed = p.speed ?? 1.0;
+      program.uniforms["uTime"].value = time * speed * 0.1;
+      program.uniforms["uAmplitude"].value = p.amplitude ?? 1.0;
+      program.uniforms["uBlend"].value = p.blend ?? blend;
+
+      const currentStops = p.colorStops ?? colorStops;
+      const stopKey = currentStops.join(",");
+      if (stopKey !== cachedStopKey) {
+        cachedStopKey = stopKey;
+        cachedColorData = parseColorStops(currentStops);
+      }
+      program.uniforms["uColorStops"].value = cachedColorData;
+
       renderer.render({ scene: mesh });
     };
-    animateId = requestAnimationFrame(update);
 
+    animateId = requestAnimationFrame(update);
     resize();
 
     return () => {
       cancelAnimationFrame(animateId);
       window.removeEventListener("resize", resize);
-      if (ctn && gl.canvas.parentNode === ctn) {
+      if (gl.canvas.parentNode === ctn) {
         ctn.removeChild(gl.canvas);
       }
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
+    // The effect intentionally runs once. Props are read via propsRef to avoid
+    // tearing down and recreating the WebGL context on every render.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [amplitude]);
+  }, []);
 
-  return <div ref={ctnDom} className="w-full h-full" />;
+  return <div ref={ctnRef} className="w-full h-full" />;
 }
