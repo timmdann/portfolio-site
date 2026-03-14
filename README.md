@@ -1,36 +1,35 @@
 # 🌐 Portfolio — Daniil Tymofieiev
 
-My personal portfolio website showcasing my skills, projects, and contact information.  
+Personal portfolio website showcasing my skills, projects, and contact information.
 Live demo 👉 [portfolio-timmdann.vercel.app](https://portfolio-timmdann.vercel.app)
 
 ---
 
 ## ✨ Features
 
-- **Home page** with a short introduction
-- **Skills** section with technologies and tools I use
-- **Projects** section with preview cards (each project will have its own repository)
-- Responsive layout for all devices
-- **Contact form** integrated with [EmailJS](https://www.emailjs.com/) to send feedback directly to me
+- Animated WebGL aurora background
+- Light / dark theme with system preference detection
+- **Skills** section with category filtering
+- **Projects** section with preview cards
+- Responsive layout + mobile navigation menu
+- **Contact form** with [EmailJS](https://www.emailjs.com/) integration and mailto fallback
+- CI via GitHub Actions (lint + typecheck + build)
 
 ---
 
 ## 🛠 Tech Stack
 
-- [React](https://reactjs.org/) + [Vite](https://vitejs.dev/) — fast frontend development
-- [TailwindCSS](https://tailwindcss.com/) — styling and responsive utilities
-- [JavaScript (ES6+)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- [React Hot Toast](https://react-hot-toast.com/) for notifications
-- [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS), [HTML5](https://developer.mozilla.org/en-US/docs/Web/HTML)
-- [Git](https://git-scm.com/) & [GitHub](https://github.com/) for version control
-- Deployment on [Vercel](https://vercel.com/)
-- [EmailJS](https://www.emailjs.com/) — feedback/contact form integration
+- [React 19](https://react.dev/) + [Vite](https://vitejs.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [TailwindCSS v4](https://tailwindcss.com/)
+- [OGL](https://github.com/oframe/ogl) — WebGL background animation
+- [Radix UI](https://www.radix-ui.com/) — toast notifications
+- [EmailJS](https://www.emailjs.com/) — contact form
+- [Vercel](https://vercel.com/) — deployment
 
 ---
 
 ## 🚀 Getting Started
-
-Clone the repository and run locally:
 
 ```bash
 # 1. Clone the repo
@@ -40,9 +39,35 @@ cd portfolio-site
 # 2. Install dependencies
 npm install
 
-# 3. Start development server
-npm run dev
+# 3. Set up environment variables
+cp .env.example .env
+# Fill in your EmailJS credentials in .env
 
-Now the app should be running at
-👉 http://localhost:5173/
+# 4. Start development server
+npm run dev
+# → http://localhost:5173/
+```
+
+---
+
+## 🔧 Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start development server |
+| `npm run build` | Production build |
+| `npm run typecheck` | TypeScript type check |
+| `npm run lint` | ESLint |
+| `npm run preview` | Preview production build |
+
+---
+
+## 🔑 Environment Variables
+
+Copy `.env.example` to `.env` and fill in your [EmailJS](https://www.emailjs.com/) credentials:
+
+```env
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
 ```
