@@ -1,24 +1,19 @@
 import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
-import { cn } from "../lib/utils";
+import { cn } from "../lib/utils.ts";
 
-function getInitialTheme() {
+function getInitialTheme(): "dark" | "light" {
   if (typeof window === "undefined") return "light";
   const stored = localStorage.getItem("theme");
   if (stored === "dark" || stored === "light") return stored;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
 export const ThemeToggle = () => {
-  const [isDarkMode, setIsDarkMode] = useState(
-    () => getInitialTheme() === "dark"
-  );
+  const [isDarkMode, setIsDarkMode] = useState(() => getInitialTheme() === "dark");
 
   useEffect(() => {
-    const root = document.documentElement;
-    root.classList.toggle("dark", isDarkMode);
+    document.documentElement.classList.toggle("dark", isDarkMode);
     localStorage.setItem("theme", isDarkMode ? "dark" : "light");
   }, [isDarkMode]);
 
@@ -27,10 +22,10 @@ export const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      aria-label="Toggle theme"
+      aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
       className={cn(
-        "fixed max-sm:hidden top-5 right-5 z-50 p-2 rounded-full transition-colors duration-300",
-        "focus:outline-none"
+        "fixed top-5 right-5 z-50 p-2 rounded-full transition-colors duration-300",
+        "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       )}
     >
       {isDarkMode ? (
