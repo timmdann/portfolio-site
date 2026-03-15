@@ -1,11 +1,11 @@
-# 🌐 Portfolio — Daniil Tymofieiev
+# Portfolio — Daniil Tymofieiev
 
 Personal portfolio website showcasing my skills, projects, and contact information.
-Live demo 👉 [portfolio-timmdann.vercel.app](https://portfolio-timmdann.vercel.app)
+Live demo [portfolio-timmdann.vercel.app](https://portfolio-timmdann.vercel.app)
 
 ---
 
-## ✨ Features
+## Features
 
 - Animated WebGL aurora background
 - Light / dark theme with system preference detection
@@ -17,7 +17,7 @@ Live demo 👉 [portfolio-timmdann.vercel.app](https://portfolio-timmdann.vercel
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - [React 19](https://react.dev/) + [Vite](https://vitejs.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
@@ -29,7 +29,7 @@ Live demo 👉 [portfolio-timmdann.vercel.app](https://portfolio-timmdann.vercel
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ```bash
 # 1. Clone the repo
@@ -50,19 +50,19 @@ npm run dev
 
 ---
 
-## 🔧 Scripts
+## Scripts
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Start development server |
-| `npm run build` | Production build |
-| `npm run typecheck` | TypeScript type check |
-| `npm run lint` | ESLint |
-| `npm run preview` | Preview production build |
+| Command             | Description              |
+| ------------------- | ------------------------ |
+| `npm run dev`       | Start development server |
+| `npm run build`     | Production build         |
+| `npm run typecheck` | TypeScript type check    |
+| `npm run lint`      | ESLint                   |
+| `npm run preview`   | Preview production build |
 
 ---
 
-## 🔑 Environment Variables
+## Environment Variables
 
 Copy `.env.example` to `.env` and fill in your [EmailJS](https://www.emailjs.com/) credentials:
 
